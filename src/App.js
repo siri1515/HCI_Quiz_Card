@@ -1,24 +1,68 @@
-import logo from './logo.svg';
-import './App.css';
+import { React, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import CardBlock from './Components/CardBlock';
+import CardSetBlock from './Components/CardSetBlock'
+
+const data = [
+  {
+    id: 1,
+    title: 'Card Set 1',
+    cards: [
+      {
+        id: 1,
+        question: 'Question 1',
+        answer: 'Answer 1',
+      },
+      {
+        id: 2,
+        question: 'Question 2',
+        answer: 'Answer 2',
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Card Set 2',
+    cards: [
+      {
+        id: 1,
+        question: 'Question 1',
+        answer: 'Answer 1',
+      },
+      {
+        id: 2,
+        question: 'Question 2',
+        answer: 'Answer 2',
+      },
+      {
+        id: 3,
+        question: 'Question 3',
+        answer: 'Answer 3',
+      },
+    ],
+  },
+];
 
 function App() {
+
+  const [chosenSet, setChosenSet] = useState('');
+
+  //from CardSetItem component
+  function getIdHandler2(id){
+    const newList = data.find((set) => {
+      return set.id === id;
+    })
+    setChosenSet(newList);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<CardSetBlock list={data} onCardSetItemClick2={getIdHandler2}/>} />
+          <Route path="/quizcard" element={<CardBlock list={chosenSet.cards} />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

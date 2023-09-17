@@ -1,0 +1,10 @@
+.card_set_item{
+    background-color: aqua;
+    height: 100px;
+    width: 200px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
