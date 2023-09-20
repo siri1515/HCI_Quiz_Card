@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import CardBlock from './Components/CardBlock';
-import CardSetBlock from './Components/CardSetBlock'
+import CardSetPage from './Components/CardSetPage';
 
 const data = [
   {
@@ -58,7 +58,7 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<CardSetBlock list={data} onCardSetItemClick2={getIdHandler2}/>} />
+          <Route path="/" element={<CardSetPage list={data} onCardSetItemClick2={getIdHandler2}/>} />
           <Route path="/quizcard" element={<CardBlock list={chosenSet.cards} />} />
         </Routes>
       </div>
