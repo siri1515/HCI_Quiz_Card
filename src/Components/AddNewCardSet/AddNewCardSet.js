@@ -1,10 +1,24 @@
 import { React, useState } from 'react';
+import CardSetForm from './CardSetForm';
 
-export default function AddNewCardSet(){
-    const [addNew, setAddNew] = useState(false);
+export default function AddNewCardSet(props){
+    const [addNew, setAddNew] = useState(true);
 
-    function onClickHandler(){
-        setAddNew(true);
+    function ClickHandler(){
+        setAddNew(false);
+    }
+
+    function saveCardSetDataHandler(cardSetData){
+        const newCardSet = {
+            ...cardSetData,
+            id: Math.random().toString(),
+        };
+
+        props.onAddCardSet(newCardSet); //pass to upper component
+    }
+
+    function saveDeleteHandler(state){
+        setAddNew(state);
     }
 
     return (
@@ -12,14 +26,17 @@ export default function AddNewCardSet(){
             {addNew ? 
                 (
                     <div>
-                        <button onClick={onClickHandler}>Add Your New CardSet</button>
+                        <button onClick={ClickHandler}>Add Your New CardSet</button>
                     </div>
+                     
                 )
             :
-                (
-                    <div></div>
+                (   
+                    <div>
+                        <CardSetForm onSaveCardSetData={saveCardSetDataHandler} onDeleteForm={saveDeleteHandler} />
+                    </div>
                 )
-            };
+            }
         </div>
         
     )
