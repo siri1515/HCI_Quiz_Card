@@ -42,20 +42,32 @@ export default function CardBlock(props){
 
     console.log(props.list);
 
-    return(
-        <div className="list_block">
-            <div className="card" onClick={cardClickHandler}>
-                {side===true ? props.list[index].question : props.list[index].answer}
-            </div>
-            <div className="button_block">
-                <button onClick={prevClickHandler} disabled={prevDisabled}>Previous</button>
-                <div className="index_block">
-                    <div>{index+1}</div>
-                    <div>{'/'}</div>
-                    <div>{props.list.length}</div>
+    if (props.list.length > 0){
+        return(
+            <div>
+                <button>eidt mode</button>
+                <div className="list_block">
+                    <div className="card" onClick={cardClickHandler}>
+                        {side===true ? props.list[index].question : props.list[index].answer}
+                    </div>
+                    <div className="button_block">
+                        <button onClick={prevClickHandler} disabled={prevDisabled}>Previous</button>
+                        <div className="index_block">
+                            <div>{index+1}</div>
+                            <div>{'/'}</div>
+                            <div>{props.list.length}</div>
+                        </div>
+                        <button onClick={nextClickHandler} disabled={nextDisabled}>Next</button>
+                    </div>
                 </div>
-                <button onClick={nextClickHandler} disabled={nextDisabled}>Next</button>
             </div>
-        </div>
-    )
+        )
+    }
+    else{
+        return(
+            <div>
+                there's no card yet
+            </div>
+        )
+    }
 }
