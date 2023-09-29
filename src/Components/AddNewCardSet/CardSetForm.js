@@ -22,10 +22,11 @@ export default function CardSetForm(props){
         const cardSetData = {
             title: newCardSetName,
             cards: [
+                /*
                 {
                     question: newQuestion,
                     answer: newAnswer
-                }
+                }*/
             ]
         }
         props.onSaveCardSetData(cardSetData);   

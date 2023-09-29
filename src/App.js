@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import CardBlock from './Components/CardBlock';
+import CardPage from './Components/CardPage/CardPage';
 import CardSetPage from './Components/CardSetPage';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<CardSetPage onSaveChosenSet={saveChosenSetHandler} />} />
-          <Route path="/quizcard" element={<CardBlock list={chosenSet.cards} />} />
+          <Route path="/quizcard" element={<CardPage list={chosenSet.cards} setTitle={chosenSet.title} />} />
         </Routes>
       </div>
     </Router>

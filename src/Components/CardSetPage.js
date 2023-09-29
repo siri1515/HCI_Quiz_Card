@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import CardSetItem from "./CardSetItem";
 import AddNewCardSet from './AddNewCardSet/AddNewCardSet';
-import './CardSetBlock.css';
+import './CardSetPage.css';
 import { useNavigate } from 'react-router-dom';
 
 const data = [
@@ -68,7 +68,7 @@ export default function CardSetPage(props){
     return(
         <div>
             <AddNewCardSet onAddCardSet={addCardSetHandler} />
-            <div className="card_set_block">
+            <div className="card_set_page">
                 {list.map((cardset) => {
                     return(
                         <CardSetItem 
