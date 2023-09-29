@@ -2,6 +2,8 @@ import { React, useState, useEffect } from "react";
 import './CardBlock.css';
 
 export default function CardBlock(props){
+
+    //quiz card block
     const [index, setIndex] = useState(0);
     const [prevDisabled, setPrevDisabled] = useState(false);
     const [nextDisabled, setNextDisabled] = useState(true);
@@ -40,12 +42,28 @@ export default function CardBlock(props){
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [index]);
 
-    console.log(props.list);
+    //edit mode
+    const [editMode, setEditMode] = useState(false);
+    const [modeState, setModeState] = useState('Enter');
+
+    function editClickHandler(){
+
+        if(modeState === 'Enter')
+        {
+            setModeState('Quit');
+        }
+        else{
+            setModeState('Enter');
+        }
+
+        setEditMode(!editMode);
+    }
+
 
     if (props.list.length > 0){
         return(
             <div>
-                <button>eidt mode</button>
+                <button onClick={editClickHandler}>{modeState + ' Edit Mode'}</button>
                 <div className="list_block">
                     <div className="card" onClick={cardClickHandler}>
                         {side===true ? props.list[index].question : props.list[index].answer}
