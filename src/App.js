@@ -3,21 +3,109 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import CardPage from './Components/CardPage/CardPage';
 import CardSetPage from './Components/CardSetPage';
 
+const data = [
+  {
+    id: 1,
+    title: 'Card Set 1',
+    cards: [
+      {
+        id: 1,
+        question: 'Question 1',
+        answer: 'Answer 1',
+      },
+      {
+        id: 2,
+        question: 'Question 2',
+        answer: 'Answer 2',
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Card Set 2',
+    cards: [
+      {
+        id: 1,
+        question: 'Question 1',
+        answer: 'Answer 1',
+      },
+      {
+        id: 2,
+        question: 'Question 2',
+        answer: 'Answer 2',
+      },
+      {
+        id: 3,
+        question: 'Question 3',
+        answer: 'Answer 3',
+      },
+    ],
+  },
+];
+
+
 function App() {
 
+  const[list, setList] = useState(data);
   const [chosenSet, setChosenSet] = useState('');
+  const [chosenIndex, setChosenIndex] = useState('');
 
   function saveChosenSetHandler(chosenSet){
     setChosenSet(chosenSet);
   }
+
+  function saveChosenSetIndexHandler(i){
+    setChosenIndex(i);
+  }
+
   console.log("chosenset", chosenSet);
+
+  function addCardSetHandler2(newCardSet){
+    setList((prevCardSet) => {
+      return [newCardSet, ...prevCardSet];
+    })
+  }
+
+  
+  function indexDeleteHandler2(index){
+    const updatedList = list.map((cardset, setIndex) => {
+      if (setIndex === chosenIndex) {
+        const updatedCards = cardset.cards.filter((_, i) => i !== index);
+        return { ...cardset, cards: updatedCards };
+      }
+      return cardset;
+    });
+
+    if (chosenSet && chosenSet.id === updatedList[chosenIndex].id) {
+      setChosenSet(updatedList[chosenIndex]);
+    }
+    setList(updatedList);
+  }
+  console.log('after delete: ', chosenSet.cards);
+
 
   return (
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<CardSetPage onSaveChosenSet={saveChosenSetHandler} />} />
-          <Route path="/quizcard" element={<CardPage list={chosenSet.cards} setTitle={chosenSet.title} />} />
+          <Route  path="/" 
+                  element={
+                            <CardSetPage 
+                              list={list}
+                              onAddCardSet2={addCardSetHandler2}
+                              onSaveChosenSet={saveChosenSetHandler} 
+                              onSaveChosenSetIndex={saveChosenSetIndexHandler}
+                            />
+                          } 
+          />
+          <Route  path="/quizcard" 
+                  element={
+                            <CardPage 
+                              list={chosenSet.cards} 
+                              setTitle={chosenSet.title} 
+                              onSaveDeletedIndex2={indexDeleteHandler2} />
+                          } 
+          />
         </Routes>
       </div>
     </Router>
