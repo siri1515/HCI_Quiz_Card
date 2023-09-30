@@ -37,6 +37,12 @@ export default function CardBlock(props){
         }
     };
 
+    function deleteHandler(){
+        //props.list.splice(index, 1);
+        //console.log("delete", props.list);
+        props.onSaveDeletedIndex(index);
+    }
+
     useEffect(() => {
         updateButtonStates();
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -49,6 +55,13 @@ export default function CardBlock(props){
                 <div className="card" onClick={cardClickHandler}>
                     {side===true ? props.list[index].question : props.list[index].answer}
                 </div>
+                {
+                    props.editState === true ? 
+                    (
+                        <button onClick={deleteHandler}>Delete</button>
+                    )
+                    : ''
+                }
                 <div className="button_block">
                     <button onClick={prevClickHandler} disabled={prevDisabled}>Previous</button>
                     <div className="index_block">
