@@ -12,14 +12,19 @@ export default function CardSetPage(props){
 
     const navigate = useNavigate();
 
+    //find the set user clicked
     function getIdHandler(id){
         const clickedSet = props.list.find((set) => {
             return set.id === id;
         })
         const clickedSetIndex = props.list.findIndex(set => set.id === id);
-        props.onSaveChosenSet(clickedSet);
-        props.onSaveChosenSetIndex(clickedSetIndex);
+        props.onSaveChosenSet(clickedSet);            //the set
+        props.onSaveChosenSetIndex(clickedSetIndex);  //index of the set
         navigate('/quizcard');
+    }
+
+    function deleteHandler(cardsetID){
+        props.onSaveDeletedID(cardsetID);
     }
 
     return(
@@ -28,11 +33,13 @@ export default function CardSetPage(props){
             <div className="card_set_page">
                 {props.list.map((cardset) => {
                     return(
-                        <CardSetItem 
-                            title={cardset.title} 
-                            id={cardset.id} 
-                            key={cardset.id} 
-                            onCardSetItemClick={getIdHandler}/>
+                        <div key={cardset.id}>
+                          <CardSetItem 
+                              title={cardset.title} 
+                              id={cardset.id} 
+                              onCardSetItemClick={getIdHandler}/>
+                          <button onClick={() => deleteHandler(cardset.id)}>Delete</button>
+                        </div>
                     )
                 })}
             </div>
