@@ -6,6 +6,7 @@ import CardSetPage from './Components/CardSetPage';
 const data = [
   {
     id: 1,
+    key: 1,
     title: 'Card Set 1',
     cards: [
       {
@@ -22,6 +23,7 @@ const data = [
   },
   {
     id: 2,
+    key: 2,
     title: 'Card Set 2',
     cards: [
       {
@@ -58,15 +60,14 @@ function App() {
     setChosenIndex(i);
   }
 
-  console.log("chosenset", chosenSet);
-
+  //add new cardset
   function addCardSetHandler2(newCardSet){
     setList((prevCardSet) => {
       return [newCardSet, ...prevCardSet];
     })
   }
 
-  
+  //delete quiz card user clicked by index
   function indexDeleteHandler2(index){
     const updatedList = list.map((cardset, setIndex) => {
       if (setIndex === chosenIndex) {
@@ -81,7 +82,11 @@ function App() {
     }
     setList(updatedList);
   }
-  console.log('after delete: ', chosenSet.cards);
+
+  function deleteIDHandler(cardsetID){
+    setList(list.filter(cardset => cardset.id !== cardsetID));
+  }
+  console.log('list: ', list);
 
 
   return (
@@ -95,6 +100,7 @@ function App() {
                               onAddCardSet2={addCardSetHandler2}
                               onSaveChosenSet={saveChosenSetHandler} 
                               onSaveChosenSetIndex={saveChosenSetIndexHandler}
+                              onSaveDeletedID={deleteIDHandler}
                             />
                           } 
           />
