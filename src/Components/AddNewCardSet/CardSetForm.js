@@ -21,19 +21,13 @@ export default function CardSetForm(props){
         event.preventDefault();
         const cardSetData = {
             title: newCardSetName,
-            cards: [
-                /*
-                {
-                    question: newQuestion,
-                    answer: newAnswer
-                }*/
-            ]
+            cards: []
         }
         props.onSaveCardSetData(cardSetData);   
         setNewCardSetName('');
     }
 
-    function deleteHandler(){
+    function cancelHandler(){
         props.onDeleteForm(true);
     }
 
@@ -52,7 +46,7 @@ export default function CardSetForm(props){
                 <input type="text" value={newAnswer} onChange={answerChangeHandler} />
             </div>
             <div>
-                <button onClick={deleteHandler}>Delete</button>
+                <button onClick={cancelHandler}>Cancel</button>
                 <button type="submit">Add New Cardset</button>
             </div>
         </form>
