@@ -23,6 +23,10 @@ export default function CardPage(props){
         props.onSaveDeletedIndex2(index);
     }
 
+    function changeHandler(newList){
+        props.onSaveChanges(newList);
+    }
+
     if (props.list.length > 0){
         return(
             <Fragment>
@@ -36,6 +40,7 @@ export default function CardPage(props){
                     list={props.list} 
                     editState={editMode} 
                     onSaveDeletedIndex={indexDeleteHandler} 
+                    onSaveChanges={changeHandler}
                 />
             </Fragment>
         )

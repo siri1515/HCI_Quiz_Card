@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import './CardBlock.css';
+import EditButton from "./EditButton";
 
 export default function CardBlock(props){
 
@@ -38,8 +39,6 @@ export default function CardBlock(props){
     };
 
     function deleteHandler(){
-        //props.list.splice(index, 1);
-        //console.log("delete", props.list);
         props.onSaveDeletedIndex(index);
     }
 
@@ -48,20 +47,27 @@ export default function CardBlock(props){
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [index]);
 
+    function changeHandler(newList){
+        props.onSaveChanges(newList);
+    }
+
 
     return(
         <div>
             <div className="list_block">
-                <div className="card" onClick={cardClickHandler}>
-                    {side===true ? props.list[index].question : props.list[index].answer}
-                </div>
                 {
                     props.editState === true ? 
                     (
-                        <button onClick={deleteHandler}>Delete</button>
+                        <div>
+                            <EditButton list={props.list} index={index} onSaveChanges={changeHandler} />
+                            <button onClick={deleteHandler}>Delete</button>
+                        </div>   
                     )
                     : ''
                 }
+                <div className="card" onClick={cardClickHandler}>
+                    {side===true ? props.list[index].question : props.list[index].answer}
+                </div>
                 <div className="button_block">
                     <button onClick={prevClickHandler} disabled={prevDisabled}>Previous</button>
                     <div className="index_block">

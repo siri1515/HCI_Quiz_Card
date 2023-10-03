@@ -5,39 +5,39 @@ import CardSetPage from './Components/CardSetPage';
 
 const data = [
   {
-    id: 1,
-    key: 1,
+    id: 100001,
+    key: 100001,
     title: 'Card Set 1',
     cards: [
       {
-        id: 1,
+        id: 902,
         question: 'Question 1',
         answer: 'Answer 1',
       },
       {
-        id: 2,
+        id: 367,
         question: 'Question 2',
         answer: 'Answer 2',
       },
     ],
   },
   {
-    id: 2,
-    key: 2,
+    id:28647,
+    key: 28647,
     title: 'Card Set 2',
     cards: [
       {
-        id: 1,
+        id: 979,
         question: 'Question 1',
         answer: 'Answer 1',
       },
       {
-        id: 2,
+        id: 5634,
         question: 'Question 2',
         answer: 'Answer 2',
       },
       {
-        id: 3,
+        id: 3542,
         question: 'Question 3',
         answer: 'Answer 3',
       },
@@ -86,6 +86,21 @@ function App() {
   function deleteIDHandler(cardsetID){
     setList(list.filter(cardset => cardset.id !== cardsetID));
   }
+
+  //user change the card content
+  function changeHandler(newList){
+    const updatedList = list.map((cardset) => {
+      if(cardset.id === chosenSet.id){
+        return {
+          ...cardset,
+          cards: newList,
+        };
+      }
+      return cardset;
+    })
+    setList(updatedList);
+  }
+
   console.log('list: ', list);
 
 
@@ -109,7 +124,9 @@ function App() {
                             <CardPage 
                               list={chosenSet.cards} 
                               setTitle={chosenSet.title} 
-                              onSaveDeletedIndex2={indexDeleteHandler2} />
+                              onSaveDeletedIndex2={indexDeleteHandler2}
+                              onSaveChanges={changeHandler} 
+                            />
                           } 
           />
         </Routes>
