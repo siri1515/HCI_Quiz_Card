@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import CardPage from './Components/CardPage/CardPage';
 import CardSetPage from './Components/CardSetPage';
 
+//changes
 const data = [
   {
     id: 100001,
