@@ -102,7 +102,27 @@ function App() {
     setList(updatedList);
   }
 
-  console.log('list: ', list);
+  function addHandler(newList){
+    const updatedList = list.map((cardset) => {
+      if(cardset.id === chosenSet.id){
+        return {
+          ...cardset,
+          cards: newList,
+        };
+      }
+      return cardset;
+    })
+
+    list.map((cardset) => {
+      if(cardset.id === chosenSet.id){
+        setChosenSet(cardset);
+      }
+      return '';
+    })
+    setList(updatedList);
+    console.log("chosen: ", chosenSet);
+    console.log("new: ", list);
+  }
 
 
   return (
@@ -127,6 +147,7 @@ function App() {
                               setTitle={chosenSet.title} 
                               onSaveDeletedIndex2={indexDeleteHandler2}
                               onSaveChanges={changeHandler} 
+                              onSaveAdd={addHandler}
                             />
                           } 
           />
