@@ -19,12 +19,17 @@ export default function CardPage(props){
         setEditMode(!editMode);
     }
 
+    //
     function indexDeleteHandler(index){
         props.onSaveDeletedIndex2(index);
     }
 
     function changeHandler(newList){
         props.onSaveChanges(newList);
+    }
+
+    function addHandler(newList){
+        props.onSaveAdd(newList);
     }
 
     if (props.list.length > 0){
@@ -41,6 +46,7 @@ export default function CardPage(props){
                     editState={editMode} 
                     onSaveDeletedIndex={indexDeleteHandler} 
                     onSaveChanges={changeHandler}
+                    onSaveAdd={addHandler}
                 />
             </Fragment>
         )

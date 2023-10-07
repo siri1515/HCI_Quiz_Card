@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import CardPage from './Components/CardPage/CardPage';
 import CardSetPage from './Components/CardSetPage';
 
+//changes
 const data = [
   {
     id: 100001,
@@ -101,7 +102,27 @@ function App() {
     setList(updatedList);
   }
 
-  console.log('list: ', list);
+  function addHandler(newList){
+    const updatedList = list.map((cardset) => {
+      if(cardset.id === chosenSet.id){
+        return {
+          ...cardset,
+          cards: newList,
+        };
+      }
+      return cardset;
+    })
+
+    list.map((cardset) => {
+      if(cardset.id === chosenSet.id){
+        setChosenSet(cardset);
+      }
+      return '';
+    })
+    setList(updatedList);
+    console.log("chosen: ", chosenSet);
+    console.log("new: ", list);
+  }
 
 
   return (
@@ -126,6 +147,7 @@ function App() {
                               setTitle={chosenSet.title} 
                               onSaveDeletedIndex2={indexDeleteHandler2}
                               onSaveChanges={changeHandler} 
+                              onSaveAdd={addHandler}
                             />
                           } 
           />

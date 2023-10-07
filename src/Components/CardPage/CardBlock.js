@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import './CardBlock.css';
 import EditButton from "./EditButton";
+import AddNewButton from "./AddNewButton";
 
 export default function CardBlock(props){
 
@@ -51,6 +52,10 @@ export default function CardBlock(props){
         props.onSaveChanges(newList);
     }
 
+    function addHandler(newList){
+        props.onSaveAdd(newList);
+    }
+
 
     return(
         <div>
@@ -59,6 +64,7 @@ export default function CardBlock(props){
                     props.editState === true ? 
                     (
                         <div>
+                            <AddNewButton list={props.list} index={index} onSaveAdd={addHandler} />
                             <EditButton list={props.list} index={index} onSaveChanges={changeHandler} />
                             <button onClick={deleteHandler}>Delete</button>
                         </div>   
