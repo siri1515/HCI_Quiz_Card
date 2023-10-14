@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import CardPage from './Components/CardPage/CardPage';
 import CardSetPage from './Components/CardSetPage';
+import ChatgptApi from './Components/ChatgptApi';
 
 //changes
 const data = [
@@ -148,6 +149,12 @@ function App() {
                               onSaveDeletedIndex2={indexDeleteHandler2}
                               onSaveChanges={changeHandler} 
                               onSaveAdd={addHandler}
+                            />
+                          } 
+          />
+          <Route  path="/ai_generator" 
+                  element={
+                            <ChatgptApi
                             />
                           } 
           />
