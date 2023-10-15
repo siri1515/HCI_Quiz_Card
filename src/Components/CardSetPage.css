@@ -5,53 +5,53 @@ body {
 
 .page_title {
   text-align: center;
-  font-size: 2.5em; /* A bigger, more pronounced title */
-  margin-bottom: 30px; /* Slightly increased spacing */
+  font-size: 2.5em; 
+  margin-bottom: 30px;
   color: #007bff; 
 }
 
 .card_set_page {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Center items instead of space-around for better alignment */
+  justify-content: center; 
   margin-top: 20px;
 }
 
 .card_set_item {
   background-color: #f5f5f5;
   border-radius: 8px;
-  padding: 20px; /* Increased padding for more spacing within the card */
-  margin: 15px; /* Slightly increased margin for more spacing between cards */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* A deeper shadow for more depth */
-  transition: transform 0.2s, box-shadow 0.2s; /* Added shadow to transition */
+  padding: 20px; 
+  margin: 15px; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); 
+  transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
-  width: 200px; /* Set a width to ensure consistency */
-  text-align: center; /* Center content */
-  position: relative; /* Set to relative to position delete button absolutely */
+  width: 200px; 
+  text-align: center; 
+  position: relative; 
 }
 
 .card_set_item:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .card_set_item h3 {
   margin: 0;
-  margin-bottom: 10px; /* Slight spacing before the delete button */
+  margin-bottom: 10px;
 }
 
 .delete_button {
   background-color: #dc3545;
   color: #fff;
   border: none;
-  padding: 8px 16px; /* Increased padding for a bigger button */
+  padding: 8px 16px; 
   border-radius: 4px;
   cursor: pointer;
-  position: absolute; /* Absolute position */
-  bottom: 10px; /* Positioned at the bottom of the card */
-  left: 50%; /* Centering */
-  transform: translateX(-50%); /* Further centering */
-  font-weight: bold; /* Bold text */
+  position: absolute; 
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
 }
 
 .delete_button:hover {
@@ -61,19 +61,19 @@ body {
 /* Styles for the Add New Card Set Button */
 .add_card_set_button {
   display: block;
-  margin: 20px auto; /* Center the button */
+  margin: 20px auto; 
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 12px 24px; /* Generous padding for a prominent appearance */
+  padding: 12px 24px; 
   border-radius: 8px;
-  font-size: 1.1em; /* Slightly bigger font size */
+  font-size: 1.1em; 
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Subtle shadow */
-  transition: transform 0.2s, background-color 0.2s; /* Smooth transition for hover */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); 
+  transition: transform 0.2s, background-color 0.2s;
 }
 
 .add_card_set_button:hover {
   background-color: #0056b3;
-  transform: translateY(-3px); /* Slight lift on hover */
+  transform: translateY(-3px);
 }
