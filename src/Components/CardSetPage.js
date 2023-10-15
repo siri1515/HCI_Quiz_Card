@@ -39,7 +39,7 @@ export default function CardSetPage(props){
                               title={cardset.title} 
                               id={cardset.id} 
                               onCardSetItemClick={getIdHandler}/>
-                          <button className="delete_button" onClick={() => deleteHandler(cardset.id)}>Delete</button>
+                          {/* <button className="delete_button" onClick={() => deleteHandler(cardset.id)}>Delete</button> */}
                         </div>
                     )
                 })}

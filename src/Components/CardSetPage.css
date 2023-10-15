@@ -1,48 +1,79 @@
 body {
   background-color: beige;
+  font-family: 'Arial', sans-serif;
 }
 
 .page_title {
   text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 2.5em; /* A bigger, more pronounced title */
+  margin-bottom: 30px; /* Slightly increased spacing */
   color: #007bff; 
 }
 
 .card_set_page {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center; /* Center items instead of space-around for better alignment */
   margin-top: 20px;
 }
 
 .card_set_item {
   background-color: #f5f5f5;
   border-radius: 8px;
-  padding: 10px;
-  margin: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
+  padding: 20px; /* Increased padding for more spacing within the card */
+  margin: 15px; /* Slightly increased margin for more spacing between cards */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* A deeper shadow for more depth */
+  transition: transform 0.2s, box-shadow 0.2s; /* Added shadow to transition */
   cursor: pointer;
+  width: 200px; /* Set a width to ensure consistency */
+  text-align: center; /* Center content */
+  position: relative; /* Set to relative to position delete button absolutely */
 }
 
 .card_set_item:hover {
   transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
 }
 
 .card_set_item h3 {
   margin: 0;
+  margin-bottom: 10px; /* Slight spacing before the delete button */
 }
 
 .delete_button {
   background-color: #dc3545;
   color: #fff;
   border: none;
-  padding: 5px 10px;
+  padding: 8px 16px; /* Increased padding for a bigger button */
   border-radius: 4px;
   cursor: pointer;
+  position: absolute; /* Absolute position */
+  bottom: 10px; /* Positioned at the bottom of the card */
+  left: 50%; /* Centering */
+  transform: translateX(-50%); /* Further centering */
+  font-weight: bold; /* Bold text */
 }
 
 .delete_button:hover {
   background-color: #c82333;
+}
+
+/* Styles for the Add New Card Set Button */
+.add_card_set_button {
+  display: block;
+  margin: 20px auto; /* Center the button */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px; /* Generous padding for a prominent appearance */
+  border-radius: 8px;
+  font-size: 1.1em; /* Slightly bigger font size */
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+  transition: transform 0.2s, background-color 0.2s; /* Smooth transition for hover */
+}
+
+.add_card_set_button:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px); /* Slight lift on hover */
 }
