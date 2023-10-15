@@ -29,16 +29,17 @@ export default function CardSetPage(props){
 
     return(
         <div>
+            <h1 className="page_title">Quiz Card Maker</h1> {/* Add the title */}
             <AddNewCardSet onAddCardSet={addCardSetHandler} />
             <div className="card_set_page">
                 {props.list.map((cardset) => {
                     return(
-                        <div key={cardset.id}>
+                        <div key={cardset.id} className="card_set_item">
                           <CardSetItem 
                               title={cardset.title} 
                               id={cardset.id} 
                               onCardSetItemClick={getIdHandler}/>
-                          <button onClick={() => deleteHandler(cardset.id)}>Delete</button>
+                          <button className="delete_button" onClick={() => deleteHandler(cardset.id)}>Delete</button>
                         </div>
                     )
                 })}
