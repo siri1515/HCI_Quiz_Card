@@ -2,6 +2,8 @@ import { React, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import CardPage from './Components/CardPage/CardPage';
 import CardSetPage from './Components/CardSetPage';
+import About from './Components/Common/About';
+import AI from './Components/AI';
 //import ChatgptApi from './Components/ChatgptApi';
 
 //changes
@@ -130,7 +132,7 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route  path="/" 
+          <Route  path="/cardset" 
                   element={
                             <CardSetPage 
                               list={list}
@@ -139,6 +141,16 @@ function App() {
                               onSaveChosenSetIndex={saveChosenSetIndexHandler}
                               onSaveDeletedID={deleteIDHandler}
                             />
+                          } 
+          />
+          <Route  path="/" 
+                  element={
+                            <About />
+                          } 
+          />
+          <Route  path="/ai" 
+                  element={
+                            <AI />
                           } 
           />
           <Route  path="/quizcard" 

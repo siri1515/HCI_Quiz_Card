@@ -1,0 +1,29 @@
+.navbar {
+    display: flex;
+    height: auto;
+    background-color: #FFAFCC;
+    padding: 10px; 
+    font-size: 18px;
+  }
+  
+.navLink {
+    margin-left: 10px;
+    margin-right: 40px;
+}
+
+.navLink a{
+    text-decoration: none;
+}
+
+.link{
+    color: white;
+}
+
+.link:hover{
+    color: #555;
+}
+
+.link_disabled{
+    color: #555;
+}
+  
