@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import CardSetItem from "./CardSetItem";
 import AddNewCardSet from './AddNewCardSet/AddNewCardSet';
+import NavBar from "./Common/NavBar";
 import './CardSetPage.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -29,6 +30,7 @@ export default function CardSetPage(props){
 
     return(
         <div>
+            <NavBar />
             <h1 className="page_title">Quiz Card Maker</h1> {/* Add the title */}
             <AddNewCardSet onAddCardSet={addCardSetHandler} />
             <div className="card_set_page">

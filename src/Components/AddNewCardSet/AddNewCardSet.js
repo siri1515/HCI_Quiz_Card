@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
 import CardSetForm from './CardSetForm';
+import styles from './AddNewCardSet.module.css'; 
 
 export default function AddNewCardSet(props){
     const [addNew, setAddNew] = useState(true);
@@ -25,7 +26,7 @@ export default function AddNewCardSet(props){
         <div>
             {addNew ? 
                 (
-                    <div>
+                    <div className={styles.button_block}>
                         <button onClick={ClickHandler}>Add Your New CardSet</button>
                     </div>
                      
